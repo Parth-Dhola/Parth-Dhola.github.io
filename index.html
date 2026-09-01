@@ -252,24 +252,25 @@
           </button>
         </div>
 
-        <div class="project-slider-arrows" aria-label="Project Navigation">
-          <button class="slider-arrow-btn" id="project-prev" aria-label="Previous Project">
-            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-          </button>
-          <span class="project-page-indicator" id="project-page-indicator">01 / 03</span>
-          <button class="slider-arrow-btn" id="project-next" aria-label="Next Project">
-            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-          </button>
+        <div class="project-header-counter">
+          <span class="project-page-indicator" id="project-page-indicator">Project 01 / 03</span>
         </div>
       </div>
 
-      <!-- Horizontal Project Slider Viewport -->
-      <div class="projects-slider-viewport" id="projects-slider-viewport">
-        <div class="projects-slider-track" id="projects-slider-track">
-          
-          <!-- SLIDE 1: AURORA (Full Evolutionary Story) -->
-          <div class="project-slide-item" data-slide="0">
-            <article class="story-project-card" aria-labelledby="aurora-title">
+      <!-- Horizontal Project Slider Carousel Stage with Side Buttons -->
+      <div class="projects-carousel-stage">
+        <!-- Left Side Floating Arrow Button -->
+        <button class="slider-side-btn prev" id="project-side-prev" aria-label="Previous Project">
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        </button>
+
+        <!-- Horizontal Slider Viewport -->
+        <div class="projects-slider-viewport" id="projects-slider-viewport">
+          <div class="projects-slider-track" id="projects-slider-track">
+            
+            <!-- SLIDE 1: AURORA (Full Evolutionary Story) -->
+            <div class="project-slide-item" data-slide="0">
+              <article class="story-project-card" aria-labelledby="aurora-title">
           <div class="story-header">
             <div class="story-meta">
               <span class="project-overline">Evolutionary Build Story</span>
@@ -697,6 +698,22 @@
 
     </div>
   </div>
+
+  <!-- Right Side Floating Arrow Button -->
+  <button class="slider-side-btn next" id="project-side-next" aria-label="Next Project">
+    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+  </button>
+</div>
+
+<!-- Bottom Navigation Hints & Dots Indicator -->
+<div class="project-slider-footer">
+  <span class="slider-hint"><i class="fa-regular fa-keyboard" aria-hidden="true"></i> Use [ ← / → ] keys or swipe</span>
+  <div class="carousel-dots" role="tablist" aria-label="Project Quick Navigation Dots">
+    <button class="dot-btn active" data-dot="0" aria-label="Project 1: Aurora"></button>
+    <button class="dot-btn" data-dot="1" aria-label="Project 2: Weed LTH"></button>
+    <button class="dot-btn" data-dot="2" aria-label="Project 3: AeroSense.AI"></button>
+  </div>
+</div>
 </section>
 
     <!-- Experience Section (Interactive Tabs) -->

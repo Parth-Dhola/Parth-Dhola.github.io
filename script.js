@@ -70,14 +70,15 @@
     }
 
     // -------------------------------------------------------------------------
-    // 3. HORIZONTAL PROJECT SLIDER & SWIPE ENGINE
+    // 3. HORIZONTAL PROJECT SLIDER, SIDE ARROWS & SWIPE ENGINE
     // -------------------------------------------------------------------------
     const sliderViewport = document.getElementById('projects-slider-viewport');
     const sliderTrack = document.getElementById('projects-slider-track');
     const projectTabBtns = document.querySelectorAll('.project-tab-btn');
     const projectSlides = document.querySelectorAll('.project-slide-item');
-    const prevBtn = document.getElementById('project-prev');
-    const nextBtn = document.getElementById('project-next');
+    const sidePrevBtn = document.getElementById('project-side-prev');
+    const sideNextBtn = document.getElementById('project-side-next');
+    const dotBtns = document.querySelectorAll('.dot-btn');
     const pageIndicator = document.getElementById('project-page-indicator');
 
     let currentProjectIdx = 0;
@@ -94,16 +95,23 @@
         sliderTrack.style.transform = `translateX(-${currentProjectIdx * 100}%)`;
       }
 
-      // Update Tabs
+      // Update Top Tabs
       projectTabBtns.forEach((btn, idx) => {
         const isActive = idx === currentProjectIdx;
         btn.classList.toggle('active', isActive);
         btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
       });
 
+      // Update Bottom Dots
+      dotBtns.forEach((dot, idx) => {
+        const isActive = idx === currentProjectIdx;
+        dot.classList.toggle('active', isActive);
+        dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
       // Update Indicator
       if (pageIndicator) {
-        pageIndicator.textContent = `0${currentProjectIdx + 1} / 0${totalProjects}`;
+        pageIndicator.textContent = `Project 0${currentProjectIdx + 1} / 0${totalProjects}`;
       }
 
       // Dynamic viewport height adaptation
@@ -112,9 +120,13 @@
         sliderViewport.style.height = `${activeCard.offsetHeight}px`;
       }
 
-      // Update Prev / Next button states
-      if (prevBtn) prevBtn.style.opacity = currentProjectIdx === 0 ? '0.35' : '1';
-      if (nextBtn) nextBtn.style.opacity = currentProjectIdx === totalProjects - 1 ? '0.35' : '1';
+      // Update Side Prev / Next button states
+      if (sidePrevBtn) {
+        sidePrevBtn.classList.toggle('is-disabled', currentProjectIdx === 0);
+      }
+      if (sideNextBtn) {
+        sideNextBtn.classList.toggle('is-disabled', currentProjectIdx === totalProjects - 1);
+      }
     }
 
     // Tab Button Clicks
@@ -125,12 +137,20 @@
       });
     });
 
-    // Arrow Button Clicks
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => goToProject(currentProjectIdx - 1));
+    // Dot Button Clicks
+    dotBtns.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.getAttribute('data-dot'), 10);
+        goToProject(idx);
+      });
+    });
+
+    // Side Arrow Button Clicks
+    if (sidePrevBtn) {
+      sidePrevBtn.addEventListener('click', () => goToProject(currentProjectIdx - 1));
     }
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => goToProject(currentProjectIdx + 1));
+    if (sideNextBtn) {
+      sideNextBtn.addEventListener('click', () => goToProject(currentProjectIdx + 1));
     }
 
     // Touch Swipe Gesture Support (Mobile / Tablet)

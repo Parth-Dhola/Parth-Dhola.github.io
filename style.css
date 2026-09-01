@@ -869,43 +869,121 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-.project-slider-arrows {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+.project-header-counter {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--green);
   background: var(--bg-light-navy);
-  padding: 0.35rem 0.65rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.slider-arrow-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Carousel Stage with Side Floating Buttons */
+.projects-carousel-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.slider-side-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--bg-dark-navy);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--light-slate);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 10px 25px -5px var(--navy-shadow);
+  backdrop-filter: blur(8px);
   transition: var(--transition);
 }
 
-.slider-arrow-btn:hover {
-  background: var(--green-tint);
-  border-color: var(--green);
-  color: var(--green);
-  transform: scale(1.05);
+.slider-side-btn.prev {
+  left: -23px;
 }
 
-.project-page-indicator {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
+.slider-side-btn.next {
+  right: -23px;
+}
+
+.slider-side-btn:hover {
+  background: var(--bg-lightest-navy);
+  border-color: var(--green);
   color: var(--green);
-  font-weight: 600;
-  padding: 0 4px;
+  box-shadow: 0 0 15px var(--green-glow);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-side-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.slider-side-btn.is-disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Bottom Navigation Hints & Dots */
+.project-slider-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 0 0.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.slider-hint {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--slate);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.slider-hint i {
+  color: var(--green);
+}
+
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot-btn {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg-lightest-navy);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  padding: 0;
+  transition: var(--transition);
+}
+
+.dot-btn:hover {
+  background: var(--slate);
+}
+
+.dot-btn.active {
+  width: 24px;
+  border-radius: 6px;
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 0 10px var(--green-glow);
 }
 
 /* Horizontal Slider Viewport and Track */
@@ -1590,9 +1668,17 @@ input[type="range"] {
     padding: 0.45rem 0.85rem;
   }
 
-  .project-slider-arrows {
-    justify-content: space-between;
-    width: 100%;
+  .slider-side-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .slider-side-btn.prev {
+    left: -12px;
+  }
+
+  .slider-side-btn.next {
+    right: -12px;
   }
 
   .story-project-card {
