@@ -803,8 +803,134 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   STORY-DRIVEN BUILDER PROJECTS
+   STORY-DRIVEN BUILDER PROJECTS & GROUNDED ANIMATIONS
    ========================================================================== */
+
+/* Project Category Filter Chips */
+.project-filter-wrapper {
+  margin-bottom: 2.5rem;
+}
+
+.project-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-dark-navy);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--slate);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.filter-chip:hover {
+  color: var(--lightest-slate);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.filter-chip.active {
+  background: var(--green-tint);
+  border-color: var(--green);
+  color: var(--green);
+  font-weight: 500;
+  box-shadow: 0 0 15px -3px var(--green-glow);
+}
+
+.chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.filter-chip.active .chip-dot {
+  opacity: 1;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.chip-count {
+  font-size: 0.72rem;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+  line-height: 1;
+}
+
+.filter-chip.active .chip-count {
+  background: rgba(52, 211, 153, 0.2);
+}
+
+/* Grounded-Inspired Scroll-Driven Reveal Animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3D Tilt Card & Light Sheen Effect */
+.tilt-card {
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, border-color 0.25s ease;
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+}
+
+.tilt-card::before {
+  content: '';
+  position: absolute;
+  top: var(--card-mouse-y, -1000px);
+  left: var(--card-mouse-x, -1000px);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--green-tint) 0%, transparent 65%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.tilt-card:hover::before {
+  opacity: 0.6;
+}
+
+/* Magnetic Button Physics */
+.magnetic-btn {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  will-change: transform;
+}
+
+/* Filter Item Transitions */
+.story-project-card {
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), max-height 0.5s ease;
+}
+
+.story-project-card.is-hidden {
+  display: none !important;
+  opacity: 0;
+  transform: scale(0.96) translateY(20px);
+}
+
 .featured-projects-list {
   display: flex;
   flex-direction: column;
@@ -817,12 +943,10 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 8px;
   padding: 2.5rem;
   box-shadow: 0 15px 30px -15px var(--navy-shadow);
-  transition: var(--transition);
 }
 
 .story-project-card:hover {
   border-color: rgba(100, 255, 218, 0.3);
-  transform: translateY(-3px);
 }
 
 .story-header {
@@ -1533,6 +1657,15 @@ input[type="range"] {
 
   .tab-panel {
     padding: 0.5rem 0;
+  }
+
+  .project-filter-chips {
+    gap: 0.5rem;
+  }
+
+  .filter-chip {
+    font-size: 0.76rem;
+    padding: 0.45rem 0.85rem;
   }
 
   .contact-section {

@@ -165,7 +165,7 @@
   <main id="content" class="main-container">
     
     <!-- Hero Section -->
-    <section id="hero" class="section hero-section" aria-labelledby="hero-title">
+    <section id="hero" class="section hero-section reveal-on-scroll" aria-labelledby="hero-title">
       <div class="hero-intro">
         <h1 class="hero-name" id="hero-title">
           <span class="hero-prefix">hi, i am</span>
@@ -177,14 +177,14 @@
         </p>
 
         <div class="hero-cta">
-          <a href="#projects" class="btn-clean">see how i build things -></a>
-          <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean-outline">connect on linkedin</a>
+          <a href="#projects" class="btn-clean magnetic-btn">see how i build things -></a>
+          <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean-outline magnetic-btn">connect on linkedin</a>
         </div>
       </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about-section" aria-labelledby="about-heading">
+    <section id="about" class="section about-section reveal-on-scroll" aria-labelledby="about-heading">
       <h2 class="section-heading" id="about-heading"><span class="heading-num">01.</span> about me</h2>
       
       <div class="about-content">
@@ -220,12 +220,12 @@
         </div>
 
         <div class="about-media">
-          <div class="photo-wrapper" id="photo-flip-card" title="Click to toggle official online avatar / co-pilot 🐾">
+          <div class="photo-wrapper tilt-card" id="photo-flip-card" title="Click to toggle official online avatar / co-pilot 🐾">
             <div class="photo-card">
               <img src="photo.png" alt="Parth Vinodray Dhola" class="about-img" id="main-photo" loading="lazy">
             </div>
             <div class="photo-border" aria-hidden="true"></div>
-            <button class="avatar-toggle-btn" id="avatar-toggle-btn" aria-label="Toggle profile avatar">
+            <button class="avatar-toggle-btn magnetic-btn" id="avatar-toggle-btn" aria-label="Toggle profile avatar">
               <i class="fa-solid fa-paw" aria-hidden="true"></i>
               <span class="btn-tooltip">toggle pfp 🐾</span>
             </button>
@@ -235,13 +235,31 @@
     </section>
 
     <!-- Projects / How I Build Section -->
-    <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
+    <section id="projects" class="section projects-section reveal-on-scroll" aria-labelledby="projects-heading">
       <h2 class="section-heading" id="projects-heading"><span class="heading-num">02.</span> the builder's log (how i engineered these)</h2>
+
+      <!-- Interactive Category Filter Chips -->
+      <div class="project-filter-wrapper" aria-label="Project Category Filter">
+        <div class="project-filter-chips" role="tablist">
+          <button class="filter-chip active" data-filter="all" role="tab" aria-selected="true">
+            <span class="chip-dot"></span> All Systems <span class="chip-count">3</span>
+          </button>
+          <button class="filter-chip" data-filter="genai" role="tab" aria-selected="false">
+            <span class="chip-dot"></span> GenAI &amp; Memory <span class="chip-count">1</span>
+          </button>
+          <button class="filter-chip" data-filter="edge" role="tab" aria-selected="false">
+            <span class="chip-dot"></span> Edge AI &amp; Compression <span class="chip-count">1</span>
+          </button>
+          <button class="filter-chip" data-filter="telemetry" role="tab" aria-selected="false">
+            <span class="chip-dot"></span> Telemetry &amp; XAI <span class="chip-count">1</span>
+          </button>
+        </div>
+      </div>
 
       <div class="featured-projects-list">
         
         <!-- PROJECT 1: AURORA (Full Evolutionary Story) -->
-        <article class="story-project-card" aria-labelledby="aurora-title">
+        <article class="story-project-card tilt-card reveal-on-scroll" data-category="genai" aria-labelledby="aurora-title">
           <div class="story-header">
             <div class="story-meta">
               <span class="project-overline">Evolutionary Build Story</span>
@@ -331,7 +349,7 @@
         </article>
 
         <!-- PROJECT 2: WEED LTH (The Edge Model Compression Experiment) -->
-        <article class="story-project-card" aria-labelledby="weed-lth-title">
+        <article class="story-project-card tilt-card reveal-on-scroll" data-category="edge" aria-labelledby="weed-lth-title">
           <div class="story-header">
             <div class="story-meta">
               <span class="project-overline">The Edge AI Experiment</span>
@@ -543,11 +561,130 @@
           </div>
         </article>
 
+        <!-- PROJECT 3: AEROSENSE.AI (Explainable Atmospheric Telemetry Microservice) -->
+        <article class="story-project-card tilt-card reveal-on-scroll" data-category="telemetry" aria-labelledby="aerosense-title">
+          <div class="story-header">
+            <div class="story-meta">
+              <span class="project-overline">Environmental Telemetry &amp; XAI</span>
+              <h3 class="story-title" id="aerosense-title">
+                <a href="https://github.com/Parth-Dhola/AeroSense.AI" target="_blank" rel="noopener noreferrer" class="title-link">AeroSense.AI — Explainable Atmospheric Telemetry &amp; AQI Microservice</a>
+              </h3>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Parth-Dhola/AeroSense.AI" target="_blank" rel="noopener noreferrer" aria-label="AeroSense.AI GitHub Repository"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+
+          <div class="story-narrative">
+            <p class="narrative-intro">
+              An end-to-end Machine Learning web service and developer REST API analyzing atmospheric pollutant telemetry (PM2.5, PM10, NO2, CO, SO2, O3) across 26 major urban monitoring stations (29,531 records) with Explainable AI (XAI):
+            </p>
+
+            <div class="evolution-timeline">
+              <!-- Step 1 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">1</div>
+                <div class="step-content">
+                  <h4>Multi-Station Sensor Ingestion (29,531 Records)</h4>
+                  <p>
+                    Aggregated real-time continuous atmospheric telemetry across 26 major urban sensor stations in India, monitoring 6 critical pollutants: <strong>PM<sub>2.5</sub></strong>, <strong>PM<sub>10</sub></strong>, <strong>NO<sub>2</sub></strong>, <strong>CO</strong>, <strong>SO<sub>2</sub></strong>, and <strong>O<sub>3</sub></strong>.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">2</div>
+                <div class="step-content">
+                  <h4>Mitigating Selection Bias: Why Not dropna()?</h4>
+                  <p>
+                    Environmental sensors intermittently go offline during routine calibration or severe smog spikes. Discarding rows with <code>dropna()</code> would purge <strong>&gt;60% of real historical records</strong> and erase rare Severe crisis events. Because pollutant curves follow right-skewed log-normal distributions, I implemented <strong>Median Imputation</strong> to prevent extreme peak distortion while preserving critical crisis telemetry.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">3</div>
+                <div class="step-content">
+                  <h4>Stratified RandomForest &amp; Continuous XAI Engine</h4>
+                  <p>
+                    Implemented stratified 75/25 partitioning to preserve minority severe-smog class distributions. Trained an ensemble <strong>RandomForestClassifier</strong> coupled with an Explainable AI (XAI) engine that computes continuous sub-indices and dynamic feature importance to explain *why* an AQI spike occurred.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">4</div>
+                <div class="step-content">
+                  <h4>High-Throughput REST API (&lt;15ms) &amp; PyTest Suite</h4>
+                  <p>
+                    Serialized the model pipeline and deployed a lightweight Flask JSON microservice (<code>POST /api/predict</code>) with <strong>sub-15ms inference latency</strong> suitable for resource-constrained IoT gateways, backed by <strong>12 automated unit and integration tests</strong> in <strong>pytest</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Live AQI & XAI Simulator Widget -->
+            <div class="lth-simulator-row">
+              <div class="lth-interactive-card aqi-interactive-card">
+                <div class="widget-header">
+                  <i class="fa-solid fa-wind" aria-hidden="true"></i>
+                  <span>Live Atmospheric Telemetry &amp; XAI Simulator</span>
+                </div>
+                <div class="widget-body">
+                  <div class="aqi-slider-group">
+                    <label for="aqi-pm25-slider" class="slider-label">
+                      <span>Fine Particulate Matter (PM<sub>2.5</sub>):</span>
+                      <strong id="pm25-val">68 µg/m³</strong>
+                    </label>
+                    <input type="range" id="aqi-pm25-slider" min="5" max="350" value="68" step="1" aria-label="Adjust PM2.5 Level">
+                  </div>
+
+                  <div class="widget-metrics">
+                    <div class="metric-box">
+                      <span class="metric-title">Predicted AQI Category</span>
+                      <span class="metric-num highlight" id="aqi-category">Moderate</span>
+                    </div>
+                    <div class="metric-box">
+                      <span class="metric-title">Inference Latency</span>
+                      <span class="metric-num highlight-green" id="aqi-latency">&lt; 12.4 ms</span>
+                    </div>
+                    <div class="metric-box">
+                      <span class="metric-title">Primary Driver (XAI)</span>
+                      <span class="metric-num" id="aqi-driver">PM2.5 (64.2%)</span>
+                    </div>
+                    <div class="metric-box">
+                      <span class="metric-title">Model Confidence</span>
+                      <span class="metric-num" id="aqi-confidence">94.8%</span>
+                    </div>
+                  </div>
+                  <p class="widget-caption" id="aqi-caption">
+                    ● <strong>XAI Diagnostics:</strong> Sub-index analysis identifies fine particulate matter (PM2.5) as the primary contributor to current atmospheric hazard level.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="story-tech-footer">
+              <span class="tech-tag">Scikit-Learn</span>
+              <span class="tech-tag">RandomForest</span>
+              <span class="tech-tag">Explainable AI (XAI)</span>
+              <span class="tech-tag">Flask Microservice</span>
+              <span class="tech-tag">REST API (&lt;15ms)</span>
+              <span class="tech-tag">PyTest (12 Tests)</span>
+              <span class="tech-tag">Median Imputation</span>
+              <span class="tech-tag">IoT Telemetry</span>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
     <!-- Experience Section (Interactive Tabs) -->
-    <section id="experience" class="section exp-section" aria-labelledby="experience-heading">
+    <section id="experience" class="section exp-section reveal-on-scroll" aria-labelledby="experience-heading">
       <h2 class="section-heading" id="experience-heading"><span class="heading-num">03.</span> where i've been</h2>
 
       <div class="jobs-tabs">
@@ -621,7 +758,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+    <section id="contact" class="section contact-section reveal-on-scroll" aria-labelledby="contact-heading">
       <p class="contact-overline"><span class="heading-num">04.</span> what's next?</p>
       <h2 class="contact-title" id="contact-heading">get in touch</h2>
       <p class="contact-desc">
@@ -629,7 +766,7 @@
       </p>
 
       <div class="contact-actions">
-        <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean big">say hello on linkedin</a>
+        <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean big magnetic-btn">say hello on linkedin</a>
       </div>
 
       <div class="contact-direct-details">
