@@ -70,130 +70,125 @@
     }
 
     // -------------------------------------------------------------------------
-    // 3. HORIZONTAL PIN & SCROLL ENGINE (Grounded-Style Track)
+    // 3. HORIZONTAL PROJECT SLIDER & SWIPE ENGINE
     // -------------------------------------------------------------------------
-    const horizontalContainer = document.querySelector('.horizontal-scroll-container');
-    const horizontalTrack = document.getElementById('horizontal-track');
-    const progressBar = document.getElementById('horizontal-progress-bar');
-    const projectCounter = document.getElementById('project-counter');
-    const projectCards = document.querySelectorAll('.story-project-card');
+    const sliderViewport = document.getElementById('projects-slider-viewport');
+    const sliderTrack = document.getElementById('projects-slider-track');
+    const projectTabBtns = document.querySelectorAll('.project-tab-btn');
+    const projectSlides = document.querySelectorAll('.project-slide-item');
+    const prevBtn = document.getElementById('project-prev');
+    const nextBtn = document.getElementById('project-next');
+    const pageIndicator = document.getElementById('project-page-indicator');
 
-    let isHorizontalRaf = false;
+    let currentProjectIdx = 0;
+    const totalProjects = projectSlides.length;
 
-    function updateHorizontalScroll() {
-      if (!horizontalContainer || !horizontalTrack) {
-        isHorizontalRaf = false;
-        return;
+    function goToProject(index) {
+      if (totalProjects === 0) return;
+      if (index < 0) index = 0;
+      if (index >= totalProjects) index = totalProjects - 1;
+
+      currentProjectIdx = index;
+
+      if (sliderTrack) {
+        sliderTrack.style.transform = `translateX(-${currentProjectIdx * 100}%)`;
       }
 
-      const rect = horizontalContainer.getBoundingClientRect();
-      const scrollDist = horizontalContainer.offsetHeight - window.innerHeight;
-      
-      if (scrollDist > 0) {
-        const progress = Math.min(Math.max(-rect.top / scrollDist, 0), 1);
-        const visibleCards = Array.from(projectCards).filter(c => !c.classList.contains('is-hidden'));
-        const totalCards = visibleCards.length || 1;
-        const maxTranslate = horizontalTrack.scrollWidth - horizontalTrack.parentElement.clientWidth;
-        
-        if (maxTranslate > 0) {
-          horizontalTrack.style.transform = `translateX(${-progress * maxTranslate}px)`;
-        } else {
-          horizontalTrack.style.transform = 'translateX(0px)';
-        }
-
-        if (progressBar) {
-          progressBar.style.width = `${Math.max(15, progress * 100)}%`;
-        }
-
-        if (projectCounter) {
-          const currentIdx = Math.min(Math.floor(progress * totalCards) + 1, totalCards);
-          projectCounter.textContent = `0${currentIdx} / 0${totalCards}`;
-        }
-      }
-
-      isHorizontalRaf = false;
-    }
-
-    window.addEventListener('scroll', () => {
-      if (!isHorizontalRaf) {
-        isHorizontalRaf = true;
-        requestAnimationFrame(updateHorizontalScroll);
-      }
-    }, { passive: true });
-
-    window.addEventListener('resize', () => {
-      updateHorizontalScroll();
-    }, { passive: true });
-
-    // Initial update
-    updateHorizontalScroll();
-
-    // -------------------------------------------------------------------------
-    // 4. 3D TILT CARDS & DYNAMIC CURSOR LIGHT SHEEN
-    // -------------------------------------------------------------------------
-    const tiltCards = document.querySelectorAll('.tilt-card');
-    
-    if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      tiltCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          
-          card.style.setProperty('--card-mouse-x', `${x}px`);
-          card.style.setProperty('--card-mouse-y', `${y}px`);
-
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          
-          const rotateX = ((y - centerY) / centerY) * -2.5;
-          const rotateY = ((x - centerX) / centerX) * 2.5;
-
-          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-        });
+      // Update Tabs
+      projectTabBtns.forEach((btn, idx) => {
+        const isActive = idx === currentProjectIdx;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
       });
+
+      // Update Indicator
+      if (pageIndicator) {
+        pageIndicator.textContent = `0${currentProjectIdx + 1} / 0${totalProjects}`;
+      }
+
+      // Dynamic viewport height adaptation
+      if (sliderViewport && projectSlides[currentProjectIdx]) {
+        const activeCard = projectSlides[currentProjectIdx].querySelector('.story-project-card') || projectSlides[currentProjectIdx];
+        sliderViewport.style.height = `${activeCard.offsetHeight}px`;
+      }
+
+      // Update Prev / Next button states
+      if (prevBtn) prevBtn.style.opacity = currentProjectIdx === 0 ? '0.35' : '1';
+      if (nextBtn) nextBtn.style.opacity = currentProjectIdx === totalProjects - 1 ? '0.35' : '1';
     }
 
-    // -------------------------------------------------------------------------
-    // 5. PROJECT CATEGORY FILTERING (Instant & Animated)
-    // -------------------------------------------------------------------------
-    const filterChips = document.querySelectorAll('.filter-chip');
-
-    filterChips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        const filter = chip.getAttribute('data-filter') || 'all';
-
-        filterChips.forEach(c => {
-          const isActive = c === chip;
-          c.classList.toggle('active', isActive);
-          c.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        });
-
-        projectCards.forEach(card => {
-          const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            card.classList.remove('is-hidden');
-            setTimeout(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'scale(1) translateY(0)';
-            }, 10);
-          } else {
-            card.style.opacity = '0';
-            card.style.transform = 'scale(0.96) translateY(15px)';
-            setTimeout(() => {
-              card.classList.add('is-hidden');
-            }, 300);
-          }
-        });
-
-        // Re-align horizontal track after filter change
-        setTimeout(updateHorizontalScroll, 320);
+    // Tab Button Clicks
+    projectTabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-project'), 10);
+        goToProject(idx);
       });
     });
+
+    // Arrow Button Clicks
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => goToProject(currentProjectIdx - 1));
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => goToProject(currentProjectIdx + 1));
+    }
+
+    // Touch Swipe Gesture Support (Mobile / Tablet)
+    if (sliderViewport) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+
+      sliderViewport.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      sliderViewport.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const touchEndY = e.changedTouches[0].screenY;
+
+        const diffX = touchStartX - touchEndX;
+        const diffY = touchStartY - touchEndY;
+
+        // Ensure swipe was predominantly horizontal and above 40px threshold
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+          if (diffX > 0) {
+            goToProject(currentProjectIdx + 1);
+          } else {
+            goToProject(currentProjectIdx - 1);
+          }
+        }
+      }, { passive: true });
+    }
+
+    // Keyboard Arrow Navigation when inside Projects Section
+    window.addEventListener('keydown', (e) => {
+      const projSec = document.getElementById('projects');
+      if (!projSec) return;
+      const rect = projSec.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!inView) return;
+
+      if (e.key === 'ArrowLeft') {
+        goToProject(currentProjectIdx - 1);
+      } else if (e.key === 'ArrowRight') {
+        goToProject(currentProjectIdx + 1);
+      }
+    });
+
+    // Resize listener for height adaptation
+    window.addEventListener('resize', () => {
+      if (sliderViewport && projectSlides[currentProjectIdx]) {
+        const activeCard = projectSlides[currentProjectIdx].querySelector('.story-project-card') || projectSlides[currentProjectIdx];
+        sliderViewport.style.height = `${activeCard.offsetHeight}px`;
+      }
+    }, { passive: true });
+
+    // Initial setup on load
+    window.addEventListener('load', () => {
+      setTimeout(() => goToProject(0), 100);
+    });
+    setTimeout(() => goToProject(0), 50);
 
     // -------------------------------------------------------------------------
     // 6. AEROSENSE.AI LIVE ATMOSPHERIC TELEMETRY & XAI SIMULATOR

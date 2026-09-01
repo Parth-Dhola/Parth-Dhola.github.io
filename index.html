@@ -177,8 +177,8 @@
         </p>
 
         <div class="hero-cta">
-          <a href="#projects" class="btn-clean">see how i build things -></a>
-          <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean-outline">connect on linkedin</a>
+          <a href="#projects" class="btn-clean magnetic-btn">see how i build things -></a>
+          <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean-outline magnetic-btn">connect on linkedin</a>
         </div>
       </div>
     </section>
@@ -225,7 +225,7 @@
               <img src="photo.png" alt="Parth Vinodray Dhola" class="about-img" id="main-photo" loading="lazy">
             </div>
             <div class="photo-border" aria-hidden="true"></div>
-            <button class="avatar-toggle-btn" id="avatar-toggle-btn" aria-label="Toggle profile avatar">
+            <button class="avatar-toggle-btn magnetic-btn" id="avatar-toggle-btn" aria-label="Toggle profile avatar">
               <i class="fa-solid fa-paw" aria-hidden="true"></i>
               <span class="btn-tooltip">toggle pfp 🐾</span>
             </button>
@@ -234,44 +234,42 @@
       </div>
     </section>
 
-    <!-- Projects / How I Build Section (Horizontal Pin & Scroll Track) -->
-    <section id="projects" class="horizontal-scroll-container" aria-labelledby="projects-heading">
-      <div class="horizontal-sticky-wrapper">
-        <div class="horizontal-top-bar">
-          <div class="horizontal-heading-row">
-            <h2 class="section-heading" id="projects-heading"><span class="heading-num">02.</span> the builder's log (how i engineered these)</h2>
-            <div class="horizontal-progress-indicator">
-              <span class="scroll-counter" id="project-counter">01 / 03</span>
-              <div class="scroll-track-line">
-                <div class="scroll-progress-fill" id="horizontal-progress-bar"></div>
-              </div>
-            </div>
-          </div>
+    <!-- Projects / How I Build Section -->
+    <section id="projects" class="section projects-section reveal-on-scroll" aria-labelledby="projects-heading">
+      <h2 class="section-heading" id="projects-heading"><span class="heading-num">02.</span> the builder's log (how i engineered these)</h2>
 
-          <!-- Interactive Category Filter Chips -->
-          <div class="project-filter-wrapper" aria-label="Project Category Filter">
-            <div class="project-filter-chips" role="tablist">
-              <button class="filter-chip active" data-filter="all" role="tab" aria-selected="true">
-                <span class="chip-dot"></span> All Systems <span class="chip-count">3</span>
-              </button>
-              <button class="filter-chip" data-filter="genai" role="tab" aria-selected="false">
-                <span class="chip-dot"></span> GenAI &amp; Memory <span class="chip-count">1</span>
-              </button>
-              <button class="filter-chip" data-filter="edge" role="tab" aria-selected="false">
-                <span class="chip-dot"></span> Edge AI &amp; Compression <span class="chip-count">1</span>
-              </button>
-              <button class="filter-chip" data-filter="telemetry" role="tab" aria-selected="false">
-                <span class="chip-dot"></span> Telemetry &amp; XAI <span class="chip-count">1</span>
-              </button>
-            </div>
-          </div>
+      <!-- Project Carousel Navigation Header -->
+      <div class="project-slider-header">
+        <div class="project-tabs-nav" role="tablist" aria-label="Select Project">
+          <button class="project-tab-btn active" data-project="0" role="tab" aria-selected="true" id="proj-tab-0">
+            <span class="tab-num">01.</span> Aurora <span class="tab-badge">GenAI</span>
+          </button>
+          <button class="project-tab-btn" data-project="1" role="tab" aria-selected="false" id="proj-tab-1">
+            <span class="tab-num">02.</span> Weed LTH <span class="tab-badge">Edge AI</span>
+          </button>
+          <button class="project-tab-btn" data-project="2" role="tab" aria-selected="false" id="proj-tab-2">
+            <span class="tab-num">03.</span> AeroSense.AI <span class="tab-badge">XAI &amp; Telemetry</span>
+          </button>
         </div>
 
-        <div class="horizontal-track-container" id="horizontal-track-container">
-          <div class="horizontal-track" id="horizontal-track">
-        
-        <!-- PROJECT 1: AURORA (Full Evolutionary Story) -->
-        <article class="story-project-card tilt-card reveal-on-scroll" data-category="genai" aria-labelledby="aurora-title">
+        <div class="project-slider-arrows" aria-label="Project Navigation">
+          <button class="slider-arrow-btn" id="project-prev" aria-label="Previous Project">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <span class="project-page-indicator" id="project-page-indicator">01 / 03</span>
+          <button class="slider-arrow-btn" id="project-next" aria-label="Next Project">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Horizontal Project Slider Viewport -->
+      <div class="projects-slider-viewport" id="projects-slider-viewport">
+        <div class="projects-slider-track" id="projects-slider-track">
+          
+          <!-- SLIDE 1: AURORA (Full Evolutionary Story) -->
+          <div class="project-slide-item" data-slide="0">
+            <article class="story-project-card" aria-labelledby="aurora-title">
           <div class="story-header">
             <div class="story-meta">
               <span class="project-overline">Evolutionary Build Story</span>
@@ -359,9 +357,11 @@
             </div>
           </div>
         </article>
+      </div>
 
-        <!-- PROJECT 2: WEED LTH (The Edge Model Compression Experiment) -->
-        <article class="story-project-card tilt-card reveal-on-scroll" data-category="edge" aria-labelledby="weed-lth-title">
+      <!-- SLIDE 2: WEED LTH (The Edge Model Compression Experiment) -->
+      <div class="project-slide-item" data-slide="1">
+        <article class="story-project-card" aria-labelledby="weed-lth-title">
           <div class="story-header">
             <div class="story-meta">
               <span class="project-overline">The Edge AI Experiment</span>
@@ -572,9 +572,11 @@
             </div>
           </div>
         </article>
+      </div>
 
-        <!-- PROJECT 3: AEROSENSE.AI (Explainable Atmospheric Telemetry Microservice) -->
-        <article class="story-project-card tilt-card reveal-on-scroll" data-category="telemetry" aria-labelledby="aerosense-title">
+      <!-- SLIDE 3: AEROSENSE.AI (Explainable Atmospheric Telemetry Microservice) -->
+      <div class="project-slide-item" data-slide="2">
+        <article class="story-project-card" aria-labelledby="aerosense-title">
           <div class="story-header">
             <div class="story-meta">
               <span class="project-overline">Environmental Telemetry &amp; XAI</span>
@@ -691,11 +693,11 @@
             </div>
           </div>
         </article>
+      </div>
 
-          </div><!-- /.horizontal-track -->
-        </div><!-- /.horizontal-track-container -->
-      </div><!-- /.horizontal-sticky-wrapper -->
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- Experience Section (Interactive Tabs) -->
     <section id="experience" class="section exp-section reveal-on-scroll" aria-labelledby="experience-heading">
@@ -780,7 +782,7 @@
       </p>
 
       <div class="contact-actions">
-        <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean big">say hello on linkedin</a>
+        <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean big magnetic-btn">say hello on linkedin</a>
       </div>
 
       <div class="contact-direct-details">
