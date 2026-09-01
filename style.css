@@ -913,40 +913,122 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.6;
 }
 
-/* Magnetic Button Physics */
-.magnetic-btn {
-  display: inline-block;
-  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-  will-change: transform;
+/* Horizontal Pin & Scroll Track (Grounded-Style) */
+.horizontal-scroll-container {
+  position: relative;
+  height: 380vh;
+  margin: 60px 0 100px;
+  width: 100%;
 }
 
-/* Filter Item Transitions */
+.horizontal-sticky-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding-top: 85px;
+  box-sizing: border-box;
+}
+
+.horizontal-top-bar {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.horizontal-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.horizontal-heading-row .section-heading {
+  margin-bottom: 1.25rem;
+}
+
+.horizontal-progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--slate);
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+
+.scroll-counter {
+  color: var(--green);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.scroll-track-line {
+  width: 90px;
+  height: 3px;
+  background: var(--bg-lightest-navy);
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 33%;
+  background: var(--green);
+  transition: width 0.08s ease-out;
+  border-radius: 3px;
+}
+
+.horizontal-track-container {
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-bottom: 25px;
+}
+
+.horizontal-track {
+  display: flex;
+  gap: 2.5rem;
+  padding: 0 max(2rem, calc((100vw - 1000px) / 2));
+  will-change: transform;
+  transition: transform 0.08s linear;
+}
+
 .story-project-card {
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), max-height 0.5s ease;
+  width: min(85vw, 840px);
+  flex-shrink: 0;
+  max-height: calc(100vh - 250px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  background-color: var(--bg-light-navy);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2.25rem;
+  box-shadow: 0 20px 40px -15px var(--navy-shadow);
+  backdrop-filter: blur(12px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.story-project-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
 }
 
 .story-project-card.is-hidden {
   display: none !important;
   opacity: 0;
   transform: scale(0.96) translateY(20px);
-}
-
-.featured-projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-}
-
-.story-project-card {
-  background-color: var(--bg-light-navy);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-  padding: 2.5rem;
-  box-shadow: 0 15px 30px -15px var(--navy-shadow);
-}
-
-.story-project-card:hover {
-  border-color: rgba(100, 255, 218, 0.3);
 }
 
 .story-header {
@@ -1567,9 +1649,57 @@ input[type="range"] {
     left: 10px;
   }
 
+  .horizontal-scroll-container {
+    height: auto;
+    margin: 40px 0 60px;
+  }
+
+  .horizontal-sticky-wrapper {
+    position: static;
+    height: auto;
+    padding-top: 0;
+    overflow: visible;
+  }
+
+  .horizontal-top-bar {
+    padding: 0;
+  }
+
+  .horizontal-heading-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .horizontal-progress-indicator {
+    display: none;
+  }
+
+  .horizontal-track-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 10px 0 25px;
+    width: 100%;
+    scrollbar-width: none;
+  }
+
+  .horizontal-track-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .horizontal-track {
+    transform: none !important;
+    gap: 1.25rem;
+    padding: 0;
+  }
+
   .story-project-card {
-    padding: 1.6rem 1.15rem;
-    border-radius: 6px;
+    width: 88vw;
+    max-height: none;
+    scroll-snap-align: center;
+    padding: 1.5rem 1.1rem;
+    border-radius: 8px;
   }
 
   .story-title {

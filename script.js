@@ -3,10 +3,10 @@
  * Parth Vinodray Dhola — Production Engine
  * Lightweight, accessible, zero-dependency interactive script.
  * Features:
+ *   - Grounded-style Horizontal Pin & Scroll Track (Sticky Viewport Translation)
  *   - Grounded-style scroll-driven staggered reveals (IntersectionObserver)
  *   - 3D interactive card tilt & cursor light reflection
- *   - Magnetic button proximity physics
- *   - Real-time project category filtering
+ *   - Real-time project category filtering & dynamic scroll re-indexing
  *   - AeroSense.AI live atmospheric telemetry & XAI simulator
  *   - Weed LTH model compression simulator
  *   - Accessible WAI-ARIA experience tabs
@@ -66,12 +66,70 @@
 
       revealElements.forEach(el => revealObserver.observe(el));
     } else {
-      // Fallback for older browsers
       revealElements.forEach(el => el.classList.add('is-revealed'));
     }
 
     // -------------------------------------------------------------------------
-    // 3. 3D TILT CARDS & DYNAMIC CURSOR LIGHT SHEEN
+    // 3. HORIZONTAL PIN & SCROLL ENGINE (Grounded-Style Track)
+    // -------------------------------------------------------------------------
+    const horizontalContainer = document.querySelector('.horizontal-scroll-container');
+    const horizontalTrack = document.getElementById('horizontal-track');
+    const progressBar = document.getElementById('horizontal-progress-bar');
+    const projectCounter = document.getElementById('project-counter');
+    const projectCards = document.querySelectorAll('.story-project-card');
+
+    let isHorizontalRaf = false;
+
+    function updateHorizontalScroll() {
+      if (!horizontalContainer || !horizontalTrack) {
+        isHorizontalRaf = false;
+        return;
+      }
+
+      const rect = horizontalContainer.getBoundingClientRect();
+      const scrollDist = horizontalContainer.offsetHeight - window.innerHeight;
+      
+      if (scrollDist > 0) {
+        const progress = Math.min(Math.max(-rect.top / scrollDist, 0), 1);
+        const visibleCards = Array.from(projectCards).filter(c => !c.classList.contains('is-hidden'));
+        const totalCards = visibleCards.length || 1;
+        const maxTranslate = horizontalTrack.scrollWidth - horizontalTrack.parentElement.clientWidth;
+        
+        if (maxTranslate > 0) {
+          horizontalTrack.style.transform = `translateX(${-progress * maxTranslate}px)`;
+        } else {
+          horizontalTrack.style.transform = 'translateX(0px)';
+        }
+
+        if (progressBar) {
+          progressBar.style.width = `${Math.max(15, progress * 100)}%`;
+        }
+
+        if (projectCounter) {
+          const currentIdx = Math.min(Math.floor(progress * totalCards) + 1, totalCards);
+          projectCounter.textContent = `0${currentIdx} / 0${totalCards}`;
+        }
+      }
+
+      isHorizontalRaf = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!isHorizontalRaf) {
+        isHorizontalRaf = true;
+        requestAnimationFrame(updateHorizontalScroll);
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      updateHorizontalScroll();
+    }, { passive: true });
+
+    // Initial update
+    updateHorizontalScroll();
+
+    // -------------------------------------------------------------------------
+    // 4. 3D TILT CARDS & DYNAMIC CURSOR LIGHT SHEEN
     // -------------------------------------------------------------------------
     const tiltCards = document.querySelectorAll('.tilt-card');
     
@@ -88,8 +146,8 @@
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
           
-          const rotateX = ((y - centerY) / centerY) * -3; // subtle tilt angle
-          const rotateY = ((x - centerX) / centerX) * 3;
+          const rotateX = ((y - centerY) / centerY) * -2.5;
+          const rotateY = ((x - centerX) / centerX) * 2.5;
 
           card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
         });
@@ -101,31 +159,9 @@
     }
 
     // -------------------------------------------------------------------------
-    // 4. MAGNETIC BUTTON HOVER EFFECT
-    // -------------------------------------------------------------------------
-    const magneticBtns = document.querySelectorAll('.magnetic-btn');
-
-    if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-          const rect = btn.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          
-          btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-        });
-
-        btn.addEventListener('mouseleave', () => {
-          btn.style.transform = 'translate(0px, 0px)';
-        });
-      });
-    }
-
-    // -------------------------------------------------------------------------
     // 5. PROJECT CATEGORY FILTERING (Instant & Animated)
     // -------------------------------------------------------------------------
     const filterChips = document.querySelectorAll('.filter-chip');
-    const projectCards = document.querySelectorAll('.story-project-card');
 
     filterChips.forEach(chip => {
       chip.addEventListener('click', () => {
@@ -141,7 +177,6 @@
           const category = card.getAttribute('data-category');
           if (filter === 'all' || category === filter) {
             card.classList.remove('is-hidden');
-            // Trigger quick fade in
             setTimeout(() => {
               card.style.opacity = '1';
               card.style.transform = 'scale(1) translateY(0)';
@@ -154,6 +189,9 @@
             }, 300);
           }
         });
+
+        // Re-align horizontal track after filter change
+        setTimeout(updateHorizontalScroll, 320);
       });
     });
 
@@ -173,7 +211,6 @@
 
       pm25Val.textContent = `${pm25} µg/m³`;
 
-      // Continuous XAI sub-index & category estimation
       if (pm25 <= 30) {
         aqiCategory.textContent = 'Good (Clean Air)';
         aqiCategory.style.color = '#34d399';
@@ -216,7 +253,7 @@
       aqiSlider.addEventListener('input', (e) => {
         updateAeroSenseSimulator(parseInt(e.target.value, 10));
       });
-      updateAeroSenseSimulator(68); // default
+      updateAeroSenseSimulator(68);
     }
 
     // -------------------------------------------------------------------------
@@ -272,7 +309,7 @@
       slider.addEventListener('input', (e) => {
         updateLTHSimulator(parseInt(e.target.value, 10));
       });
-      updateLTHSimulator(74); // default winning ticket state
+      updateLTHSimulator(74);
     }
 
     // -------------------------------------------------------------------------
@@ -454,7 +491,6 @@
       });
     }
 
-    // Initial theme execution
     applyTheme(savedTheme);
 
     themeSwatches.forEach(swatch => {

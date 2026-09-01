@@ -177,8 +177,8 @@
         </p>
 
         <div class="hero-cta">
-          <a href="#projects" class="btn-clean magnetic-btn">see how i build things -></a>
-          <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean-outline magnetic-btn">connect on linkedin</a>
+          <a href="#projects" class="btn-clean">see how i build things -></a>
+          <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean-outline">connect on linkedin</a>
         </div>
       </div>
     </section>
@@ -225,7 +225,7 @@
               <img src="photo.png" alt="Parth Vinodray Dhola" class="about-img" id="main-photo" loading="lazy">
             </div>
             <div class="photo-border" aria-hidden="true"></div>
-            <button class="avatar-toggle-btn magnetic-btn" id="avatar-toggle-btn" aria-label="Toggle profile avatar">
+            <button class="avatar-toggle-btn" id="avatar-toggle-btn" aria-label="Toggle profile avatar">
               <i class="fa-solid fa-paw" aria-hidden="true"></i>
               <span class="btn-tooltip">toggle pfp 🐾</span>
             </button>
@@ -234,29 +234,41 @@
       </div>
     </section>
 
-    <!-- Projects / How I Build Section -->
-    <section id="projects" class="section projects-section reveal-on-scroll" aria-labelledby="projects-heading">
-      <h2 class="section-heading" id="projects-heading"><span class="heading-num">02.</span> the builder's log (how i engineered these)</h2>
+    <!-- Projects / How I Build Section (Horizontal Pin & Scroll Track) -->
+    <section id="projects" class="horizontal-scroll-container" aria-labelledby="projects-heading">
+      <div class="horizontal-sticky-wrapper">
+        <div class="horizontal-top-bar">
+          <div class="horizontal-heading-row">
+            <h2 class="section-heading" id="projects-heading"><span class="heading-num">02.</span> the builder's log (how i engineered these)</h2>
+            <div class="horizontal-progress-indicator">
+              <span class="scroll-counter" id="project-counter">01 / 03</span>
+              <div class="scroll-track-line">
+                <div class="scroll-progress-fill" id="horizontal-progress-bar"></div>
+              </div>
+            </div>
+          </div>
 
-      <!-- Interactive Category Filter Chips -->
-      <div class="project-filter-wrapper" aria-label="Project Category Filter">
-        <div class="project-filter-chips" role="tablist">
-          <button class="filter-chip active" data-filter="all" role="tab" aria-selected="true">
-            <span class="chip-dot"></span> All Systems <span class="chip-count">3</span>
-          </button>
-          <button class="filter-chip" data-filter="genai" role="tab" aria-selected="false">
-            <span class="chip-dot"></span> GenAI &amp; Memory <span class="chip-count">1</span>
-          </button>
-          <button class="filter-chip" data-filter="edge" role="tab" aria-selected="false">
-            <span class="chip-dot"></span> Edge AI &amp; Compression <span class="chip-count">1</span>
-          </button>
-          <button class="filter-chip" data-filter="telemetry" role="tab" aria-selected="false">
-            <span class="chip-dot"></span> Telemetry &amp; XAI <span class="chip-count">1</span>
-          </button>
+          <!-- Interactive Category Filter Chips -->
+          <div class="project-filter-wrapper" aria-label="Project Category Filter">
+            <div class="project-filter-chips" role="tablist">
+              <button class="filter-chip active" data-filter="all" role="tab" aria-selected="true">
+                <span class="chip-dot"></span> All Systems <span class="chip-count">3</span>
+              </button>
+              <button class="filter-chip" data-filter="genai" role="tab" aria-selected="false">
+                <span class="chip-dot"></span> GenAI &amp; Memory <span class="chip-count">1</span>
+              </button>
+              <button class="filter-chip" data-filter="edge" role="tab" aria-selected="false">
+                <span class="chip-dot"></span> Edge AI &amp; Compression <span class="chip-count">1</span>
+              </button>
+              <button class="filter-chip" data-filter="telemetry" role="tab" aria-selected="false">
+                <span class="chip-dot"></span> Telemetry &amp; XAI <span class="chip-count">1</span>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="featured-projects-list">
+        <div class="horizontal-track-container" id="horizontal-track-container">
+          <div class="horizontal-track" id="horizontal-track">
         
         <!-- PROJECT 1: AURORA (Full Evolutionary Story) -->
         <article class="story-project-card tilt-card reveal-on-scroll" data-category="genai" aria-labelledby="aurora-title">
@@ -680,7 +692,9 @@
           </div>
         </article>
 
-      </div>
+          </div><!-- /.horizontal-track -->
+        </div><!-- /.horizontal-track-container -->
+      </div><!-- /.horizontal-sticky-wrapper -->
     </section>
 
     <!-- Experience Section (Interactive Tabs) -->
@@ -766,7 +780,7 @@
       </p>
 
       <div class="contact-actions">
-        <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean big magnetic-btn">say hello on linkedin</a>
+        <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean big">say hello on linkedin</a>
       </div>
 
       <div class="contact-direct-details">
