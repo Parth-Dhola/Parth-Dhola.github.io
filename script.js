@@ -78,8 +78,6 @@
     const projectSlides = document.querySelectorAll('.project-slide-item');
     const sidePrevZone = document.getElementById('project-side-zone-prev');
     const sideNextZone = document.getElementById('project-side-zone-next');
-    const sidePrevBtn = document.getElementById('project-side-prev');
-    const sideNextBtn = document.getElementById('project-side-next');
     const dotBtns = document.querySelectorAll('.dot-btn');
     const pageIndicator = document.getElementById('project-page-indicator');
 
@@ -122,14 +120,12 @@
         sliderViewport.style.height = `${activeCard.offsetHeight}px`;
       }
 
-      // Update Side Zone & Button states
+      // Update Side Zone states
       const isFirst = currentProjectIdx === 0;
       const isLast = currentProjectIdx === totalProjects - 1;
 
       if (sidePrevZone) sidePrevZone.classList.toggle('is-disabled', isFirst);
       if (sideNextZone) sideNextZone.classList.toggle('is-disabled', isLast);
-      if (sidePrevBtn) sidePrevBtn.classList.toggle('is-disabled', isFirst);
-      if (sideNextBtn) sideNextBtn.classList.toggle('is-disabled', isLast);
     }
 
     // Tab Button Clicks

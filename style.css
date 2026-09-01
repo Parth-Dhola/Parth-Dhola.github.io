@@ -879,7 +879,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Carousel Stage with Side Floating Buttons & Wide Edge Hit Zones */
+/* Carousel Stage with Invisible Edge Hit Zones */
 .projects-carousel-stage {
   position: relative;
   width: 100%;
@@ -891,58 +891,37 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 80px;
   z-index: 15;
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  transition: var(--transition);
+  transition: background 0.3s ease, opacity 0.25s ease;
 }
 
 .slider-side-zone.prev {
-  left: -25px;
+  left: 0;
+  border-radius: 8px 0 0 8px;
+  cursor: w-resize;
 }
 
 .slider-side-zone.next {
-  right: -25px;
+  right: 0;
+  border-radius: 0 8px 8px 0;
+  cursor: e-resize;
 }
 
-.slider-side-zone:hover .slider-side-btn {
-  background: var(--bg-lightest-navy);
-  border-color: var(--green);
-  color: var(--green);
-  box-shadow: 0 0 20px var(--green-glow);
-  transform: scale(1.12);
+.slider-side-zone.prev:hover {
+  background: linear-gradient(to right, rgba(52, 211, 153, 0.08), transparent);
 }
 
-.slider-side-zone:active .slider-side-btn {
-  transform: scale(0.95);
+.slider-side-zone.next:hover {
+  background: linear-gradient(to left, rgba(52, 211, 153, 0.08), transparent);
 }
 
 .slider-side-zone.is-disabled {
-  opacity: 0.2;
-  cursor: not-allowed;
+  opacity: 0;
   pointer-events: none;
-}
-
-.slider-side-btn {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--bg-dark-navy);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: var(--light-slate);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: auto;
-  cursor: pointer;
-  box-shadow: 0 10px 25px -5px var(--navy-shadow);
-  backdrop-filter: blur(8px);
-  transition: var(--transition);
 }
 
 /* Bottom Navigation Hints & Dots */
@@ -1681,20 +1660,15 @@ input[type="range"] {
   }
 
   .slider-side-zone {
-    width: 48px;
+    width: 40px;
   }
 
   .slider-side-zone.prev {
-    left: -12px;
+    left: 0;
   }
 
   .slider-side-zone.next {
-    right: -12px;
-  }
-
-  .slider-side-btn {
-    width: 36px;
-    height: 36px;
+    right: 0;
   }
 
   .story-project-card {
