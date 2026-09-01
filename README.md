@@ -1,4 +1,4 @@
-# Parth Vinodray Dhola
+# Parth-Dhola.github.io
 
 Personal portfolio & builder's log.
 
@@ -6,17 +6,11 @@ Personal portfolio & builder's log.
 
 ---
 
-### 🛠️ Tech Stack
-- **Frontend:** Pure HTML5, Modern CSS3 (Custom Properties), Vanilla JavaScript (No dependencies)
-- **CI/CD & Hosting:** GitHub Actions $\rightarrow$ GitHub Pages
+### Tech Stack
+- HTML5, CSS3, Vanilla JavaScript
+- Hosted on GitHub Pages via GitHub Actions
 
-### 🔬 Featured Systems
-- **[Aurora](https://github.com/Parth-Dhola/Aurora-Goal-Oriented-AI-Assistant-with-Knowledge-Graph-Memory):** Self-reflecting second brain with SQLite Knowledge Graph, Corrective RAG (LangGraph), and FastAPI backend.
-- **[Weed LTH](https://github.com/Parth-Dhola/Weed-LTH-Detection):** Edge model compression investigating the Lottery Ticket Hypothesis, weight rewinding, and INT8 quantization down to 25.37 KiB.
-
----
-
-### 💻 Local Preview
+### Local Preview
 ```bash
 python3 -m http.server 8000
 ```
