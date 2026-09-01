@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="sage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Parth Dhola | AI &amp; Robotics Engineer | IIT Guwahati</title>
+  <meta name="title" content="Parth Dhola | AI &amp; Robotics Engineer | IIT Guwahati">
+  <meta name="description" content="Personal portfolio and builder's log of Parth Vinodray Dhola. M.Tech Scholar in Robotics &amp; AI at IIT Guwahati, specializing in Knowledge Graphs, CRAG, and Edge Model Compression (LTH).">
+  <meta name="author" content="Parth Vinodray Dhola">
+  <meta name="keywords" content="Parth Dhola, Parth Vinodray Dhola, IIT Guwahati, Robotics, Artificial Intelligence, Lottery Ticket Hypothesis, Knowledge Graph, LangGraph, Machine Learning, Edge AI">
+  <meta name="theme-color" content="#0e1412">
+  <link rel="canonical" href="https://parth-dhola.github.io/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://parth-dhola.github.io/">
+  <meta property="og:title" content="Parth Dhola | AI &amp; Robotics Engineer | IIT Guwahati">
+  <meta property="og:description" content="Personal portfolio and builder's log of Parth Vinodray Dhola — exploring AI memory systems, Knowledge Graphs, and model compression for edge robotics.">
+  <meta property="og:image" content="photo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://parth-dhola.github.io/">
+  <meta name="twitter:title" content="Parth Dhola | AI &amp; Robotics Engineer | IIT Guwahati">
+  <meta name="twitter:description" content="Personal portfolio and builder's log of Parth Vinodray Dhola — exploring AI memory systems, Knowledge Graphs, and model compression for edge robotics.">
+  <meta name="twitter:image" content="photo.png">
+
+  <!-- Scalable SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230e1412'/><text x='50' y='68' font-size='56' font-weight='bold' font-family='monospace' fill='%2334d399' text-anchor='middle'>P</text></svg>">
+
+  <!-- Structured Data / JSON-LD for Google Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Parth Vinodray Dhola",
+    "alternateName": "Parth Dhola",
+    "url": "https://parth-dhola.github.io/",
+    "image": "https://parth-dhola.github.io/photo.png",
+    "jobTitle": "M.Tech Scholar in Robotics & AI",
+    "worksFor": {
+      "@type": "CollegeOrUniversity",
+      "name": "Indian Institute of Technology Guwahati"
+    },
+    "alumniOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "Center for Intelligent Cyber-Physical Systems, IIT Guwahati"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Government Engineering College, Modasa"
+      }
+    ],
+    "sameAs": [
+      "https://github.com/Parth-Dhola",
+      "https://www.linkedin.com/in/parth-dhola"
+    ],
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "Robotics",
+      "Model Compression",
+      "Lottery Ticket Hypothesis",
+      "Knowledge Graphs",
+      "Corrective RAG",
+      "PyTorch",
+      "Docker"
+    ]
+  }
+  </script>
+
+  <!-- Preconnect & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Main Production Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Interactive Cursor Spotlight Glow -->
+  <div class="cursor-spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <!-- Top Navigation Header -->
+  <header class="site-header" id="navbar">
+    <div class="nav-wrapper">
+      <a href="#hero" class="nav-logo" aria-label="Parth Dhola Home">
+        <span class="nav-logo-text">Parth Dhola</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <ol class="nav-list">
+          <li><a href="#about"><span class="nav-num">01.</span> /about</a></li>
+          <li><a href="#projects"><span class="nav-num">02.</span> /how-i-build</a></li>
+          <li><a href="#experience"><span class="nav-num">03.</span> /experience</a></li>
+          <li><a href="#contact"><span class="nav-num">04.</span> /contact</a></li>
+        </ol>
+
+        <!-- Theme Color Switcher -->
+        <div class="theme-picker" id="theme-picker" aria-label="Color Palette Switcher">
+          <button class="theme-swatch active" data-set-theme="sage" title="Matte Sage (Default)" style="--swatch-color: #34d399;"></button>
+          <button class="theme-swatch" data-set-theme="amber" title="Warm Amber" style="--swatch-color: #f59e0b;"></button>
+          <button class="theme-swatch" data-set-theme="nordic" title="Nordic Sky" style="--swatch-color: #38bdf8;"></button>
+          <button class="theme-swatch" data-set-theme="violet" title="Soft Violet" style="--swatch-color: #a78bfa;"></button>
+          <button class="theme-swatch" data-set-theme="graphite" title="Minimal Titanium" style="--swatch-color: #e2e8f0;"></button>
+        </div>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation" aria-hidden="true">
+      <ol class="mobile-nav-list">
+        <li><a href="#about" class="mobile-link"><span class="nav-num">01.</span> /about</a></li>
+        <li><a href="#projects" class="mobile-link"><span class="nav-num">02.</span> /how-i-build</a></li>
+        <li><a href="#experience" class="mobile-link"><span class="nav-num">03.</span> /experience</a></li>
+        <li><a href="#contact" class="mobile-link"><span class="nav-num">04.</span> /contact</a></li>
+      </ol>
+
+      <div class="mobile-theme-picker">
+        <span class="theme-label">Theme Palette:</span>
+        <div class="theme-picker mobile-picker">
+          <button class="theme-swatch active" data-set-theme="sage" title="Matte Sage (Default)" style="--swatch-color: #34d399;"></button>
+          <button class="theme-swatch" data-set-theme="amber" title="Warm Amber" style="--swatch-color: #f59e0b;"></button>
+          <button class="theme-swatch" data-set-theme="nordic" title="Nordic Sky" style="--swatch-color: #38bdf8;"></button>
+          <button class="theme-swatch" data-set-theme="violet" title="Soft Violet" style="--swatch-color: #a78bfa;"></button>
+          <button class="theme-swatch" data-set-theme="graphite" title="Minimal Titanium" style="--swatch-color: #e2e8f0;"></button>
+        </div>
+      </div>
+    </aside>
+  </header>
+
+  <!-- Left Floating Social Links -->
+  <div class="side-left" aria-label="Social Links">
+    <ul class="side-social-list">
+      <li>
+        <a href="https://github.com/Parth-Dhola" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </li>
+      <li class="side-line" aria-hidden="true"></li>
+    </ul>
+  </div>
+
+  <!-- Main Content Flow -->
+  <main id="content" class="main-container">
+    
+    <!-- Hero Section -->
+    <section id="hero" class="section hero-section" aria-labelledby="hero-title">
+      <div class="hero-intro">
+        <h1 class="hero-name" id="hero-title">
+          <span class="hero-prefix">hi, i am</span>
+          parth.
+        </h1>
+        <h2 class="hero-tagline">i build systems to solve real problems, then scale them.</h2>
+        <p class="hero-desc">
+          I'm an M.Tech scholar in <strong>Robotics &amp; Artificial Intelligence at IIT Guwahati</strong>. I like taking raw ideas—from a quick Telegram script for placement prep to a neural network running on a farm robot—and evolving them into hardened, edge-optimized, full-stack systems.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#projects" class="btn-clean">see how i build things -></a>
+          <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean-outline">connect on linkedin</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section" aria-labelledby="about-heading">
+      <h2 class="section-heading" id="about-heading"><span class="heading-num">01.</span> about me</h2>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            I don't build software just to push code—I build because I get obsessed with eliminating real friction and seeing how far machine learning models can be compressed before they break.
+          </p>
+          <p>
+            Right now, I am pursuing my Master's at the <strong>Center for Intelligent Cyber-Physical Systems (IIT Guwahati)</strong>. My focus centers around two big questions:
+          </p>
+          <ul class="focus-points">
+            <li><span class="arrow" aria-hidden="true">▹</span> <em>"How do we give AI persistent memory and self-reflection so it actually acts like a long-term collaborator?"</em></li>
+            <li><span class="arrow" aria-hidden="true">▹</span> <em>"How much compute and memory waste can we eliminate from deep models so they run in real time on ultra-low-cost, battery-powered hardware?"</em></li>
+          </ul>
+          <p>
+            Outside the terminal, my dopamine comes from video games, bingeing anime, getting lost in novels, hunting down street food, or unapologetically catching up on sleep.
+          </p>
+          <p>
+            I also have an incurable habit of tumbling down random intellectual rabbit holes—whether that's studying ancient history like the Pyramids of Giza, exploring structural architecture, or devouring neuroscience and psychology (huge <em>Huberman Lab</em> fan).
+          </p>
+
+          <p class="tech-subheading">A few tools I use regularly to build:</p>
+          <ul class="skills-list">
+            <li><span class="arrow" aria-hidden="true">▹</span> Python &amp; PyTorch</li>
+            <li><span class="arrow" aria-hidden="true">▹</span> LangGraph &amp; GenAI (CRAG)</li>
+            <li><span class="arrow" aria-hidden="true">▹</span> FastAPI &amp; WebSockets</li>
+            <li><span class="arrow" aria-hidden="true">▹</span> Knowledge Graphs (SQLite + FTS5)</li>
+            <li><span class="arrow" aria-hidden="true">▹</span> LTH Pruning &amp; Quantization</li>
+            <li><span class="arrow" aria-hidden="true">▹</span> Docker &amp; AWS EC2</li>
+            <li><span class="arrow" aria-hidden="true">▹</span> GitHub Actions CI/CD</li>
+            <li><span class="arrow" aria-hidden="true">▹</span> OpenCV &amp; Edge AI (PiOS)</li>
+          </ul>
+        </div>
+
+        <div class="about-media">
+          <div class="photo-wrapper" id="photo-flip-card" title="Click to toggle official online avatar / co-pilot 🐾">
+            <div class="photo-card">
+              <img src="photo.png" alt="Parth Vinodray Dhola" class="about-img" id="main-photo" loading="lazy">
+            </div>
+            <div class="photo-border" aria-hidden="true"></div>
+            <button class="avatar-toggle-btn" id="avatar-toggle-btn" aria-label="Toggle profile avatar">
+              <i class="fa-solid fa-paw" aria-hidden="true"></i>
+              <span class="btn-tooltip">toggle pfp 🐾</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects / How I Build Section -->
+    <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
+      <h2 class="section-heading" id="projects-heading"><span class="heading-num">02.</span> the builder's log (how i engineered these)</h2>
+
+      <div class="featured-projects-list">
+        
+        <!-- PROJECT 1: AURORA (Full Evolutionary Story) -->
+        <article class="story-project-card" aria-labelledby="aurora-title">
+          <div class="story-header">
+            <div class="story-meta">
+              <span class="project-overline">Evolutionary Build Story</span>
+              <h3 class="story-title" id="aurora-title">
+                <a href="https://github.com/Parth-Dhola/Aurora-Goal-Oriented-AI-Assistant-with-Knowledge-Graph-Memory" target="_blank" rel="noopener noreferrer" class="title-link">Aurora — From a Telegram Bot to a Self-Reflecting Second Brain</a>
+              </h3>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Parth-Dhola/Aurora-Goal-Oriented-AI-Assistant-with-Knowledge-Graph-Memory" target="_blank" rel="noopener noreferrer" aria-label="Aurora GitHub Repository"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+
+          <div class="story-narrative">
+            <p class="narrative-intro">
+              Aurora didn't start as an over-engineered architecture diagram. It evolved organically step-by-step to solve real problems I ran into:
+            </p>
+
+            <div class="evolution-timeline">
+              <!-- Step 1 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">1</div>
+                <div class="step-content">
+                  <h4>The Spark: Placement Prep &amp; Health Tracking</h4>
+                  <p>
+                    I needed a fast, zero-friction way to track my daily placement preparation schedule and health metrics. I started by wiring up a simple <strong>Telegram bot</strong> with Gemini as the brain so I could message it from anywhere.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">2</div>
+                <div class="step-content">
+                  <h4>"Why not a dedicated app &amp; real backend?"</h4>
+                  <p>
+                    A Telegram bot had UI limits. I built an installable <strong>Android app (Kivy)</strong> for 1-tap mobile access, then realized it needed past conversations as persistent context. So I architected a standalone <strong>FastAPI backend</strong> with JWT user authentication.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">3</div>
+                <div class="step-content">
+                  <h4>Hardening with PyTest, Docker &amp; CI/CD</h4>
+                  <p>
+                    Having a live backend meant things could break. I wrote test suites with <strong>pytest</strong>, containerized the whole stack with <strong>Docker Compose</strong>, and set up a <strong>GitHub Actions CI/CD pipeline</strong> that automatically tests every commit and deploys cleanly to <strong>AWS EC2</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">4</div>
+                <div class="step-content">
+                  <h4>The Knowledge Graph &amp; Obsidian Visualizer</h4>
+                  <p>
+                    I wanted Aurora to remember long-term facts, goals, and study briefs without dumping huge unstructured chat histories into LLM prompts. I structured the memory into an <strong>SQLite Knowledge Graph</strong> + FTS5 full-text search, and even wrote an <strong>Obsidian KG viewing script</strong> to visualize my evolving second-brain network as interactive graph nodes.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">5</div>
+                <div class="step-content">
+                  <h4>Self-Reflective CRAG + Live Search Fallback + Multi-LLM</h4>
+                  <p>
+                    Since LLMs have knowledge cutoffs, I built a <strong>Corrective RAG (CRAG) pipeline with LangGraph</strong>: if facts aren't found in the Knowledge Graph or uploaded documents, it self-evaluates and automatically executes a live <strong>DuckDuckGo web search</strong>. Finally, I added on-the-fly model switching between Gemini, OpenAI, Claude, and local private models (llama.cpp/Ollama).
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="story-tech-footer">
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">LangGraph (CRAG)</span>
+              <span class="tech-tag">Knowledge Graph (SQLite)</span>
+              <span class="tech-tag">Obsidian Visualizer</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">GitHub Actions CI/CD</span>
+              <span class="tech-tag">AWS EC2</span>
+              <span class="tech-tag">Kivy Android</span>
+              <span class="tech-tag">MLflow</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 2: WEED LTH (The Edge Model Compression Experiment) -->
+        <article class="story-project-card" aria-labelledby="weed-lth-title">
+          <div class="story-header">
+            <div class="story-meta">
+              <span class="project-overline">The Edge AI Experiment</span>
+              <h3 class="story-title" id="weed-lth-title">
+                <a href="https://github.com/Parth-Dhola/Weed-LTH-Detection" target="_blank" rel="noopener noreferrer" class="title-link">Lottery Ticket Hypothesis: Trimming 74% of a Neural Net for Farm Robots</a>
+              </h3>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Parth-Dhola/Weed-LTH-Detection" target="_blank" rel="noopener noreferrer" aria-label="Weed LTH GitHub Repository"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+
+          <div class="story-narrative">
+            <p class="narrative-intro">
+              What started as an exploratory course project turned into a systematic investigation of where Lottery Ticket theory meets edge deployment reality:
+            </p>
+
+            <div class="evolution-timeline">
+              <!-- Step 1 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">1</div>
+                <div class="step-content">
+                  <h4>The Origin &amp; Dense Baseline</h4>
+                  <p>
+                    I originally picked this as a course project because a friend convinced me it would be easy. I designed <strong>WeedCNN</strong> (25,974 parameters) for bounding-box detection on an agricultural dataset, achieving a <strong>96.15% dense validation baseline</strong> at 50.7 KiB (FP16).
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">2</div>
+                <div class="step-content">
+                  <h4>Pruning Exploration: One-Shot vs. IMP</h4>
+                  <p>
+                    I tested simple one-shot magnitude pruning from 10% to 90%, discovering an extreme sparsity ceiling where 99% one-shot collapsed (~45% Acc). Moving to <strong>Iterative Magnitude Pruning (IMP)</strong> across 7 rounds uncovered sparse winning sub-networks matching <strong>97.40% validation accuracy at 73.8% sparsity</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">3</div>
+                <div class="step-content">
+                  <h4>Weight-Reset Strategy Ablation (Frankle &amp; Carbin LTH)</h4>
+                  <p>
+                    To determine if sub-networks genuinely required their original initialization, I ran an ablation across three reset strategies: <strong>Original Init (W<sub>0</sub>)</strong>, <strong>Random Re-Initialization (W<sub>rand</sub>)</strong>, and <strong>Late Reset (W<sub>k=5</sub>)</strong>, proving that late rewinding provided the highest round-over-round training stability.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="evo-step">
+                <div class="step-badge" aria-hidden="true">4</div>
+                <div class="step-content">
+                  <h4>Practical Edge Deployment: Quantization &amp; Distillation</h4>
+                  <p>
+                    Because unstructured sparsity doesn't automatically reduce memory without custom hardware kernels, I benchmarked it against real deployment techniques: <strong>Dropout Regularization (0.2 optimal)</strong>, <strong>Knowledge Distillation</strong> (soft-target student acceleration), and <strong>INT8 Post-Training Quantization</strong>, compressing the deployable binary to a tiny <strong>25.37 KiB</strong> ready for battery-powered farm robots on Raspberry Pi.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Simulator & Comparison Widget -->
+            <div class="lth-simulator-row">
+              <div class="lth-interactive-card">
+                <div class="widget-header">
+                  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                  <span>Live LTH Compression Simulator</span>
+                </div>
+                <div class="widget-body">
+                  <label for="sparsity-slider" class="slider-label">
+                    <span>Pruning Sparsity:</span>
+                    <strong id="sparsity-val">74%</strong>
+                  </label>
+                  <input type="range" id="sparsity-slider" min="0" max="95" value="74" step="1" aria-label="Adjust Pruning Sparsity Percentage">
+
+                  <div class="widget-metrics">
+                    <div class="metric-box">
+                      <span class="metric-title">Validation Accuracy</span>
+                      <span class="metric-num highlight" id="metric-acc">97.4%</span>
+                    </div>
+                    <div class="metric-box">
+                      <span class="metric-title">Active Weights</span>
+                      <span class="metric-num" id="metric-params">6,753 / 25,974</span>
+                    </div>
+                    <div class="metric-box">
+                      <span class="metric-title">INT8 Model Size</span>
+                      <span class="metric-num" id="metric-size">25.4 KiB</span>
+                    </div>
+                    <div class="metric-box">
+                      <span class="metric-title">Deployable Target</span>
+                      <span class="metric-num highlight-green" id="metric-target">Edge Robot (PiOS)</span>
+                    </div>
+                  </div>
+                  <p class="widget-caption" id="widget-caption">
+                    ✓ <strong>Winning Ticket Found:</strong> Iterative pruning with original initialization matches dense accuracy with under 30% of the weights.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Empirical Results Breakdown (From Experiments Notebook) -->
+            <div class="empirical-results-wrapper">
+              <h4 class="empirical-title"><i class="fa-solid fa-square-poll-vertical" aria-hidden="true"></i> Empirical Findings &amp; Ablation Comparisons</h4>
+              <div class="empirical-grid">
+                
+                <!-- Table 1: Pruning Strategy -->
+                <div class="empirical-card">
+                  <div class="emp-card-header">
+                    <span class="emp-tag">Method Comparison</span>
+                    <h5>Pruning Strategies</h5>
+                  </div>
+                  <ul class="emp-list">
+                    <li>
+                      <span class="emp-name">Dense Baseline (20 ep)</span>
+                      <span class="emp-stat">96.15% Acc (0% Sparsity)</span>
+                    </li>
+                    <li class="highlight-row">
+                      <span class="emp-name">IMP (7 Rounds)</span>
+                      <span class="emp-stat success">97.40% Acc (73.8% Sparsity)</span>
+                    </li>
+                    <li>
+                      <span class="emp-name">One-Shot (99% Extreme)</span>
+                      <span class="emp-stat fail">~45.0% (Sparsity Ceiling)</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Table 2: Reset Strategy Ablation -->
+                <div class="empirical-card">
+                  <div class="emp-card-header">
+                    <span class="emp-tag">Reset Ablation</span>
+                    <h5>Weight Rewind Strategy</h5>
+                  </div>
+                  <ul class="emp-list">
+                    <li>
+                      <span class="emp-name">Original Init (W<sub>0</sub>)</span>
+                      <span class="emp-stat">97.20% Peak Acc</span>
+                    </li>
+                    <li>
+                      <span class="emp-name">Random Re-Init (W<sub>rand</sub>)</span>
+                      <span class="emp-stat">97.00% Slower Conv.</span>
+                    </li>
+                    <li class="highlight-row">
+                      <span class="emp-name">Late Reset (W<sub>k=5</sub>)</span>
+                      <span class="emp-stat success">97.40% (Most Stable)</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Table 3: Practical Edge Comparison -->
+                <div class="empirical-card">
+                  <div class="emp-card-header">
+                    <span class="emp-tag">Regularization</span>
+                    <h5>Dropout &amp; Quantization</h5>
+                  </div>
+                  <ul class="emp-list">
+                    <li>
+                      <span class="emp-name">Dropout = 0.0</span>
+                      <span class="emp-stat">96.41% Acc (0.618 IoU)</span>
+                    </li>
+                    <li class="highlight-row">
+                      <span class="emp-name">Dropout = 0.2</span>
+                      <span class="emp-stat success">96.67% Acc (0.608 IoU)</span>
+                    </li>
+                    <li>
+                      <span class="emp-name">INT8 Post-Training Quant</span>
+                      <span class="emp-stat success">25.37 KiB (50% shrink)</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Table 4: Knowledge Distillation -->
+                <div class="empirical-card">
+                  <div class="emp-card-header">
+                    <span class="emp-tag">Knowledge Transfer</span>
+                    <h5>Knowledge Distillation</h5>
+                  </div>
+                  <ul class="emp-list">
+                    <li>
+                      <span class="emp-name">Teacher (Dense Baseline)</span>
+                      <span class="emp-stat">96.15% Soft Targets</span>
+                    </li>
+                    <li class="highlight-row">
+                      <span class="emp-name">Distilled Sparse Student</span>
+                      <span class="emp-stat success">96.85% Faster Conv.</span>
+                    </li>
+                    <li>
+                      <span class="emp-name">Distillation + INT8</span>
+                      <span class="emp-stat success">25.37 KiB High-Fidelity</span>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="story-tech-footer">
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">Iterative Magnitude Pruning (IMP)</span>
+              <span class="tech-tag">Weight Rewinding (W<sub>0</sub>)</span>
+              <span class="tech-tag">Late Reset (W<sub>k=5</sub>)</span>
+              <span class="tech-tag">Knowledge Distillation</span>
+              <span class="tech-tag">INT8 Quantization (25 KiB)</span>
+              <span class="tech-tag">Dropout Regularization</span>
+              <span class="tech-tag">Edge Robotics</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Experience Section (Interactive Tabs) -->
+    <section id="experience" class="section exp-section" aria-labelledby="experience-heading">
+      <h2 class="section-heading" id="experience-heading"><span class="heading-num">03.</span> where i've been</h2>
+
+      <div class="jobs-tabs">
+        <!-- Tab Navigation Buttons -->
+        <div class="tab-list" role="tablist" aria-label="Work & Education Experience">
+          <button class="tab-btn active" id="tab-0" role="tab" aria-selected="true" aria-controls="panel-0" tabindex="0" data-tab="0">IIT Guwahati</button>
+          <button class="tab-btn" id="tab-1" role="tab" aria-selected="false" aria-controls="panel-1" tabindex="-1" data-tab="1">EduPhoenix</button>
+          <button class="tab-btn" id="tab-2" role="tab" aria-selected="false" aria-controls="panel-2" tabindex="-1" data-tab="2">InfoLabz</button>
+          <button class="tab-btn" id="tab-3" role="tab" aria-selected="false" aria-controls="panel-3" tabindex="-1" data-tab="3">GEC Modasa</button>
+          <span class="tab-highlight" aria-hidden="true"></span>
+        </div>
+
+        <!-- Tab Panels -->
+        <div class="tab-panels">
+          <!-- Panel 0: IIT Guwahati -->
+          <div class="tab-panel active" id="panel-0" role="tabpanel" aria-labelledby="tab-0" tabindex="0">
+            <h3 class="job-title">
+              <span>M.Tech Scholar in Robotics &amp; AI</span>
+              <span class="job-company"><a href="https://www.iitg.ac.in" target="_blank" rel="noopener noreferrer">@ IIT Guwahati</a></span>
+            </h3>
+            <p class="job-range">2025 — Present | Center for Intelligent Cyber-Physical Systems</p>
+            <ul class="job-duties">
+              <li>Maintaining a current academic <strong>CPI of 9.19 / 10.0</strong>.</li>
+              <li>Diving deep into Robot Learning, Computer Vision, Model Compression (LTH / Quantization), and Large Language Models.</li>
+              <li>Serving on the core branding team for SPIC MACAY, IIT Guwahati chapter (2026).</li>
+            </ul>
+          </div>
+
+          <!-- Panel 1: EduPhoenix Solutions -->
+          <div class="tab-panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
+            <h3 class="job-title">
+              <span>Data Scientist &amp; Operations Associate</span>
+              <span class="job-company">@ EduPhoenix Solutions</span>
+            </h3>
+            <p class="job-range">Jan 2024 — Sep 2024 | Bengaluru, India</p>
+            <ul class="job-duties">
+              <li>Engineered real-time sensor-fusion and obstacle avoidance algorithms deployed on <strong>Raspberry Pi (Edge AI)</strong>.</li>
+              <li>Built and deployed Scikit-Learn / Flask analytical pipelines.</li>
+              <li>Trained and mentored <strong>50+ interns</strong> in Python, Web Development, and Machine Learning.</li>
+              <li>Led corporate training at St. Joseph's College (Mysore) and recruitment drives across partner engineering institutions.</li>
+            </ul>
+          </div>
+
+          <!-- Panel 2: InfoLabz -->
+          <div class="tab-panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0">
+            <h3 class="job-title">
+              <span>Data Science Intern</span>
+              <span class="job-company">@ InfoLabz IT Services</span>
+            </h3>
+            <p class="job-range">Jul 2023 — Aug 2023 | Ahmedabad, India</p>
+            <ul class="job-duties">
+              <li>Applied machine learning pipelines and exploratory data analysis (EDA) techniques on live industry datasets.</li>
+              <li>Extracted actionable patterns, cleaned unstructured data, and generated interactive visualization reports.</li>
+            </ul>
+          </div>
+
+          <!-- Panel 3: GEC Modasa -->
+          <div class="tab-panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3" tabindex="0">
+            <h3 class="job-title">
+              <span>B.E. in Computer Engineering</span>
+              <span class="job-company">@ GEC Modasa</span>
+            </h3>
+            <p class="job-range">2020 — 2024 | Gujarat, India</p>
+            <ul class="job-duties">
+              <li>Graduated with a <strong>7.93 CPI</strong>, building deep foundations in Data Structures, Algorithms, Operating Systems, Computer Networks, and Cloud Computing.</li>
+              <li>Qualified the prestigious <strong>CAT 2024</strong> national aptitude examination.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+      <p class="contact-overline"><span class="heading-num">04.</span> what's next?</p>
+      <h2 class="contact-title" id="contact-heading">get in touch</h2>
+      <p class="contact-desc">
+        Whether you want to chat about model compression, building GenAI agents with knowledge graphs, or discuss upcoming engineering roles, feel free to reach out on LinkedIn.
+      </p>
+
+      <div class="contact-actions">
+        <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" class="btn-clean big">say hello on linkedin</a>
+      </div>
+
+      <div class="contact-direct-details">
+        <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> IIT Guwahati, Assam, India</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-social-mobile" aria-label="Social links">
+      <a href="https://github.com/Parth-Dhola" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/parth-dhola" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+    <p class="footer-credit">
+      Designed &amp; Built by <span class="highlight">Parth Vinodray Dhola</span>
+    </p>
+  </footer>
+
+  <!-- Production JavaScript Engine -->
+  <script src="script.js" defer></script>
+</body>
+</html>
