@@ -76,6 +76,8 @@
     const sliderTrack = document.getElementById('projects-slider-track');
     const projectTabBtns = document.querySelectorAll('.project-tab-btn');
     const projectSlides = document.querySelectorAll('.project-slide-item');
+    const sidePrevZone = document.getElementById('project-side-zone-prev');
+    const sideNextZone = document.getElementById('project-side-zone-next');
     const sidePrevBtn = document.getElementById('project-side-prev');
     const sideNextBtn = document.getElementById('project-side-next');
     const dotBtns = document.querySelectorAll('.dot-btn');
@@ -120,13 +122,14 @@
         sliderViewport.style.height = `${activeCard.offsetHeight}px`;
       }
 
-      // Update Side Prev / Next button states
-      if (sidePrevBtn) {
-        sidePrevBtn.classList.toggle('is-disabled', currentProjectIdx === 0);
-      }
-      if (sideNextBtn) {
-        sideNextBtn.classList.toggle('is-disabled', currentProjectIdx === totalProjects - 1);
-      }
+      // Update Side Zone & Button states
+      const isFirst = currentProjectIdx === 0;
+      const isLast = currentProjectIdx === totalProjects - 1;
+
+      if (sidePrevZone) sidePrevZone.classList.toggle('is-disabled', isFirst);
+      if (sideNextZone) sideNextZone.classList.toggle('is-disabled', isLast);
+      if (sidePrevBtn) sidePrevBtn.classList.toggle('is-disabled', isFirst);
+      if (sideNextBtn) sideNextBtn.classList.toggle('is-disabled', isLast);
     }
 
     // Tab Button Clicks
@@ -145,12 +148,18 @@
       });
     });
 
-    // Side Arrow Button Clicks
-    if (sidePrevBtn) {
-      sidePrevBtn.addEventListener('click', () => goToProject(currentProjectIdx - 1));
+    // Wide Edge Zone & Button Clicks
+    if (sidePrevZone) {
+      sidePrevZone.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToProject(currentProjectIdx - 1);
+      });
     }
-    if (sideNextBtn) {
-      sideNextBtn.addEventListener('click', () => goToProject(currentProjectIdx + 1));
+    if (sideNextZone) {
+      sideNextZone.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToProject(currentProjectIdx + 1);
+      });
     }
 
     // Touch Swipe Gesture Support (Mobile / Tablet)
@@ -210,66 +219,6 @@
     });
     setTimeout(() => goToProject(0), 50);
 
-    // -------------------------------------------------------------------------
-    // 6. AEROSENSE.AI LIVE ATMOSPHERIC TELEMETRY & XAI SIMULATOR
-    // -------------------------------------------------------------------------
-    const aqiSlider = document.getElementById('aqi-pm25-slider');
-    const pm25Val = document.getElementById('pm25-val');
-    const aqiCategory = document.getElementById('aqi-category');
-    const aqiLatency = document.getElementById('aqi-latency');
-    const aqiDriver = document.getElementById('aqi-driver');
-    const aqiConfidence = document.getElementById('aqi-confidence');
-    const aqiCaption = document.getElementById('aqi-caption');
-
-    function updateAeroSenseSimulator(pm25) {
-      if (!pm25Val || !aqiCategory || !aqiLatency || !aqiDriver || !aqiConfidence || !aqiCaption) return;
-
-      pm25Val.textContent = `${pm25} µg/m³`;
-
-      if (pm25 <= 30) {
-        aqiCategory.textContent = 'Good (Clean Air)';
-        aqiCategory.style.color = '#34d399';
-        aqiLatency.textContent = '< 9.8 ms';
-        aqiDriver.textContent = 'O3 / Background (31.2%)';
-        aqiConfidence.textContent = '98.4%';
-        aqiCaption.innerHTML = '● <strong>XAI Diagnostics:</strong> Atmospheric pollutant telemetry within safe national ambient standards. Zero hazard alert.';
-      } else if (pm25 <= 60) {
-        aqiCategory.textContent = 'Satisfactory';
-        aqiCategory.style.color = '#38bdf8';
-        aqiLatency.textContent = '< 11.2 ms';
-        aqiDriver.textContent = 'PM2.5 (45.8%)';
-        aqiConfidence.textContent = '96.1%';
-        aqiCaption.innerHTML = '● <strong>XAI Diagnostics:</strong> Minor particulate concentration. Sensitive groups advised to minimize prolonged outdoor exertion.';
-      } else if (pm25 <= 120) {
-        aqiCategory.textContent = 'Moderate';
-        aqiCategory.style.color = '#f59e0b';
-        aqiLatency.textContent = '< 12.4 ms';
-        aqiDriver.textContent = 'PM2.5 (64.2%)';
-        aqiConfidence.textContent = '94.8%';
-        aqiCaption.innerHTML = '● <strong>XAI Diagnostics:</strong> Sub-index analysis identifies fine particulate matter (PM2.5) as the primary contributor to current atmospheric hazard level.';
-      } else if (pm25 <= 250) {
-        aqiCategory.textContent = 'Poor';
-        aqiCategory.style.color = '#f97316';
-        aqiLatency.textContent = '< 13.5 ms';
-        aqiDriver.textContent = 'PM2.5 / NO2 (78.9%)';
-        aqiConfidence.textContent = '97.2%';
-        aqiCaption.innerHTML = '⚠️ <strong>XAI Diagnostics:</strong> Severe particulate saturation from combustion & traffic telemetry. Trigger automated IoT air scrubber alert.';
-      } else {
-        aqiCategory.textContent = 'Severe (Hazardous)';
-        aqiCategory.style.color = '#ef4444';
-        aqiLatency.textContent = '< 14.1 ms';
-        aqiDriver.textContent = 'PM2.5 Dominant (89.4%)';
-        aqiConfidence.textContent = '99.1%';
-        aqiCaption.innerHTML = '🚨 <strong>XAI Diagnostics:</strong> Critical atmospheric emergency. Model predicts severe smog episode; high-confidence automated REST webhook dispatched.';
-      }
-    }
-
-    if (aqiSlider) {
-      aqiSlider.addEventListener('input', (e) => {
-        updateAeroSenseSimulator(parseInt(e.target.value, 10));
-      });
-      updateAeroSenseSimulator(68);
-    }
 
     // -------------------------------------------------------------------------
     // 7. WEED LTH MODEL COMPRESSION SIMULATOR

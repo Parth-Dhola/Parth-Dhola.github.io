@@ -257,12 +257,14 @@
         </div>
       </div>
 
-      <!-- Horizontal Project Slider Carousel Stage with Side Buttons -->
+      <!-- Horizontal Project Slider Carousel Stage with Edge Navigation Zones -->
       <div class="projects-carousel-stage">
-        <!-- Left Side Floating Arrow Button -->
-        <button class="slider-side-btn prev" id="project-side-prev" aria-label="Previous Project">
-          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-        </button>
+        <!-- Left Edge Hit Zone & Button -->
+        <div class="slider-side-zone prev" id="project-side-zone-prev" role="button" aria-label="Previous Project" tabindex="0">
+          <button class="slider-side-btn prev" id="project-side-prev" aria-label="Previous Project" tabindex="-1">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+        </div>
 
         <!-- Horizontal Slider Viewport -->
         <div class="projects-slider-viewport" id="projects-slider-viewport">
@@ -641,47 +643,6 @@
               </div>
             </div>
 
-            <!-- Interactive Live AQI & XAI Simulator Widget -->
-            <div class="lth-simulator-row">
-              <div class="lth-interactive-card aqi-interactive-card">
-                <div class="widget-header">
-                  <i class="fa-solid fa-wind" aria-hidden="true"></i>
-                  <span>Live Atmospheric Telemetry &amp; XAI Simulator</span>
-                </div>
-                <div class="widget-body">
-                  <div class="aqi-slider-group">
-                    <label for="aqi-pm25-slider" class="slider-label">
-                      <span>Fine Particulate Matter (PM<sub>2.5</sub>):</span>
-                      <strong id="pm25-val">68 µg/m³</strong>
-                    </label>
-                    <input type="range" id="aqi-pm25-slider" min="5" max="350" value="68" step="1" aria-label="Adjust PM2.5 Level">
-                  </div>
-
-                  <div class="widget-metrics">
-                    <div class="metric-box">
-                      <span class="metric-title">Predicted AQI Category</span>
-                      <span class="metric-num highlight" id="aqi-category">Moderate</span>
-                    </div>
-                    <div class="metric-box">
-                      <span class="metric-title">Inference Latency</span>
-                      <span class="metric-num highlight-green" id="aqi-latency">&lt; 12.4 ms</span>
-                    </div>
-                    <div class="metric-box">
-                      <span class="metric-title">Primary Driver (XAI)</span>
-                      <span class="metric-num" id="aqi-driver">PM2.5 (64.2%)</span>
-                    </div>
-                    <div class="metric-box">
-                      <span class="metric-title">Model Confidence</span>
-                      <span class="metric-num" id="aqi-confidence">94.8%</span>
-                    </div>
-                  </div>
-                  <p class="widget-caption" id="aqi-caption">
-                    ● <strong>XAI Diagnostics:</strong> Sub-index analysis identifies fine particulate matter (PM2.5) as the primary contributor to current atmospheric hazard level.
-                  </p>
-                </div>
-              </div>
-            </div>
-
             <div class="story-tech-footer">
               <span class="tech-tag">Scikit-Learn</span>
               <span class="tech-tag">RandomForest</span>
@@ -699,10 +660,12 @@
     </div>
   </div>
 
-  <!-- Right Side Floating Arrow Button -->
-  <button class="slider-side-btn next" id="project-side-next" aria-label="Next Project">
-    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-  </button>
+  <!-- Right Edge Hit Zone & Button -->
+  <div class="slider-side-zone next" id="project-side-zone-next" role="button" aria-label="Next Project" tabindex="0">
+    <button class="slider-side-btn next" id="project-side-next" aria-label="Next Project" tabindex="-1">
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
 </div>
 
 <!-- Bottom Navigation Hints & Dots Indicator -->
